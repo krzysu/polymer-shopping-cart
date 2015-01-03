@@ -1,0 +1,19 @@
+{
+  "name": "polymer-shop",
+  "version": "0.0.0",
+  "authors": [
+    "Kris Urbas"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.5.2"
+  }
+}
