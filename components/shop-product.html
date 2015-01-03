@@ -3,16 +3,38 @@
 <polymer-element name="shop-product">
   <template>
     <style>
-    :host {
-      display: block;
-      width: 100%;
+    /* single product */
+    .product__price {
+      display: inline-block;
+      line-height: 34px;
+    }
+
+    .product__button-wrap {
+      float: right;
     }
     </style>
 
-    product
+    <div class="thumbnail">
+      <img src={{data.image}} alt="product image" />
+      <div class="caption clearfix">
+        <h3><a href={{data.url}} target="_blank">{{data.name}}</a></h3>
+        <div class="product__price">{{data.price}} {{data.currency}}</div>
+        <div class="product__button-wrap">
+          <button class="btn btn-primary">
+            Add to cart
+          </button>
+        </div>
+      </div>
+    </div>
+
   </template>
 
   <script>
-    Polymer({});
+    Polymer({
+      data: {
+        name: 'test',
+        price: 'elo'
+      }
+    });
   </script>
 </polymer-element>

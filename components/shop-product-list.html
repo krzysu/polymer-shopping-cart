@@ -1,0 +1,32 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="shop-product.html">
+
+<polymer-element name="shop-product-list" attributes="products-src">
+  <template>
+    <style>
+    /* products */
+    .products-list li {
+      float: left;
+      width: 30%;
+      margin-right: 5%;
+    }
+
+    .products-list li:nth-of-type(3n) {
+      margin-right: 0;
+    }
+    </style>
+
+    <div class="products-list">
+      <ul class="clearfix">
+        <li>
+          <shop-product>test1</shop-product>
+        </li>
+      </ul>
+    </div>
+
+  </template>
+
+  <script>
+    Polymer({});
+  </script>
+</polymer-element>
