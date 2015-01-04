@@ -1,29 +1,27 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 
-<polymer-element name="shop-product">
+<polymer-element name="shop-product" attributes="product">
   <template>
     <style>
-    /* single product */
-    .product__price {
-      display: inline-block;
-      line-height: 34px;
+
+    img {
+      width: 100%;
     }
 
-    .product__button-wrap {
-      float: right;
+    .button-wrap {
+      text-align: right;
     }
     </style>
 
-    <div class="thumbnail">
-      <img src={{data.image}} alt="product image" />
-      <div class="caption clearfix">
-        <h3><a href={{data.url}} target="_blank">{{data.name}}</a></h3>
-        <div class="product__price">{{data.price}} {{data.currency}}</div>
-        <div class="product__button-wrap">
-          <button class="btn btn-primary">
-            Add to cart
-          </button>
-        </div>
+    <img src={{product.image}} alt="product image" />
+    <h3><a href={{product.url}} target="_blank">{{product.name}}</a></h3>
+
+    <div layout horizontal>
+      <div flex one>{{product.price}} {{product.currency}}</div>
+      <div flex one class="button-wrap">
+        <button class="btn btn-primary">
+          Add to cart
+        </button>
       </div>
     </div>
 
@@ -31,10 +29,7 @@
 
   <script>
     Polymer({
-      data: {
-        name: 'test',
-        price: 'elo'
-      }
+      product: {}
     });
   </script>
 </polymer-element>

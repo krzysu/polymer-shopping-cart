@@ -4,29 +4,31 @@
 <polymer-element name="shop-product-list" attributes="products-src">
   <template>
     <style>
-    /* products */
-    .products-list li {
-      float: left;
+    :host {}
+
+    shop-product {
       width: 30%;
       margin-right: 5%;
     }
 
-    .products-list li:nth-of-type(3n) {
+    shop-product:nth-of-type(3n) {
       margin-right: 0;
     }
     </style>
 
-    <div class="products-list">
-      <ul class="clearfix">
-        <li>
-          <shop-product>test1</shop-product>
-        </li>
-      </ul>
+    <div layout horizontal wrap>
+      <template repeat="{{product in products}}">
+        <shop-product product="{{product}}"></shop-product>
+      </template>
     </div>
 
   </template>
 
   <script>
-    Polymer({});
+    Polymer('shop-product-list', {
+      ready: function() {
+        this.products = productsCollection;
+      }
+    });
   </script>
 </polymer-element>
