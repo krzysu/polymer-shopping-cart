@@ -1,12 +1,19 @@
-body {
-  font-size: 1em;
-  font-family: sans-serif;
+html,body {
+  height: 100%;
   margin: 0;
+  background-color: #fff;
+  font-family: 'RobotoDraft', sans-serif;
 }
 
-.container {
-  width: 80%;
-  margin: 0 auto;
+core-header-panel {
+  height: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+core-toolbar {
+  background: #1976D2;
+  color: white;
 }
 
 footer {

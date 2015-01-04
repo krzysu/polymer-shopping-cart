@@ -4,14 +4,17 @@
     <title>Polymer Shop</title>
     <link rel="stylesheet" type="text/css" href="styles/main.css">
     <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+    <link rel="import" href="components/layout.html">
     <link rel="import" href="components/shop-product-list.html">
     <link rel="import" href="components/shop-cart.html">
   </head>
-  <body unresolved>
+  <body fullbleed vertical layout unresolved>
 
-    <div class="container">
-
-      <h1>Best shop ever</h1>
+    <core-header-panel flex>
+      <core-toolbar id="mainheader">
+        <span flex>Best shop ever</span>
+        <paper-icon-button icon="shopping-cart"></paper-icon-button>
+      </core-toolbar>
 
       <div layout horizontal>
         <div flex eight>
@@ -29,7 +32,8 @@
           made by <a href="https://twitter.com/krzysu">Kris Urbas</a>, source code available on <a href="#">github</a>
         </small>
       </footer>
-    </div>
+
+    </core-header-panel>
 
   </body>
 </html>
