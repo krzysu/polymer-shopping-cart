@@ -28,3 +28,11 @@ core-toolbar {
 footer {
   margin: 0 2em;
 }
+
+core-drawer-panel:not([narrow]) #cart-icon {
+  display: none;
+}
+
+.cart-panel {
+  background: #fff;
+}

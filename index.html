@@ -10,30 +10,48 @@
   </head>
   <body fullbleed vertical layout unresolved>
 
-    <core-header-panel flex>
-      <core-toolbar id="mainheader">
-        <span flex>Best Shop Ever</span>
-        <paper-icon-button icon="shopping-cart"></paper-icon-button>
-      </core-toolbar>
+    <core-drawer-panel rightDrawer id="drawer-panel">
 
-      <div class="content" layout horizontal>
-        <div flex eight>
+      <core-header-panel main>
+        <core-toolbar id="mainheader">
+          <span flex>Best Shop Ever</span>
+          <paper-icon-button icon="shopping-cart" id="cart-icon"></paper-icon-button>
+        </core-toolbar>
+
+        <div class="content">
           <shop-product-list></shop-product-list>
         </div>
-        <div flex four>
-          <h3>Shopping Cart</h3>
-          <shop-cart></shop-cart>
-        </div>
-      </div>
 
-      <footer>
-        <small>
-          made by <a href="https://twitter.com/krzysu">Kris Urbas</a>,
-          source code available on <a href="https://github.com/krzysu/polymer-shopping-cart">github</a>
-        </small>
-      </footer>
+        <footer>
+          <small>
+            made by <a href="https://twitter.com/krzysu">Kris Urbas</a>,
+            source code available on <a href="https://github.com/krzysu/polymer-shopping-cart">github</a>
+          </small>
+        </footer>
+      </core-header-panel>
 
-    </core-header-panel>
+      <core-header-panel drawer class="cart-panel">
+        <core-toolbar>
+          <paper-icon-button icon="shopping-cart"></paper-icon-button>
+          <span>Shopping Cart</span>
+        </core-toolbar>
+
+        <shop-cart></shop-cart>
+
+      </core-header-panel>
+
+    </core-drawer-panel>
+
+    <script>
+      // show/hide cart drawer when icon clicked
+      document.addEventListener('polymer-ready', function() {
+        var cartIcon = document.getElementById('cart-icon');
+        var cartPanel = document.getElementById('drawer-panel');
+        cartIcon.addEventListener('click', function() {
+          cartPanel.togglePanel();
+        });
+      });
+    </script>
 
   </body>
 </html>

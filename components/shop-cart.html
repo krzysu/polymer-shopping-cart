@@ -1,31 +1,57 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/core-signals/core-signals.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 
 <polymer-element name="shop-cart">
   <template>
     <style>
-    :host {}
+    .cart {
+      padding: .5em;
+    }
+
+    .item {
+      padding: .8em 0;
+    }
+
+    .empty h2 {
+      color: #FF5252;
+      font-weight: normal;
+    }
+
+    .empty p {
+      color: #727272;
+    }
+
+    .total {
+      font-size: 1.3em;
+      line-height: 1.1em;
+      text-align: right;
+      padding-top: .7em;
+      border-top: 1px solid #B6B6B6;
+    }
+
     </style>
 
     <core-signals on-core-signal-cart-added="{{addItem}}"></core-signals>
     <core-signals on-core-signal-cart-removed="{{removeItem}}"></core-signals>
 
-    <template if="{{items.length > 0}}">
-      <ul>
-        <template repeat="{{item in items}}">
-          <li class="item">
-            <span class="name">{{item.name}}</span>
-            <span class="price">{{item.price}} {{item.currency}}</span>
-          </li>
-        </template>
-      </ul>
-    </template>
+    <div class="cart">
+      <template if="{{items.length > 0}}" repeat="{{item in items}}">
+        <div class="item" layout horizontal justified>
+          <div flex>{{item.name}}</div>
+          <div>{{item.price}} {{item.currency}}</div>
+        </div>
+      </template>
 
-    <template if="{{items.length === 0}}">
-      <div class="alert alert-info">Cart is empty</div>
-    </template>
+      <template if="{{items.length === 0}}">
+        <div class="empty">
+          <h2>Cart is empty</h3>
+          <p>Add some products.</p>
+        </div>
+      </template>
 
-    <div class="total">Total: {{cartTotal}} {{cartCurrency}}</div>
+      <div class="total">Total: {{cartTotal}} {{cartCurrency}}</div>
+    </div>
 
   </template>
 
