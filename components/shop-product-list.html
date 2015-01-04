@@ -8,13 +8,32 @@
     :host {}
 
     shop-product {
-      width: 30%;
-      margin-right: 5%;
+      width: 100%;
     }
 
-    shop-product:nth-of-type(3n) {
-      margin-right: 0;
+    /* Large Devices, Wide Screens */
+    @media only screen and (min-width: 1151px) {
+      shop-product {
+        width: 30%;
+        margin-right: 5%;
+      }
+
+      shop-product:nth-of-type(3n) {
+        margin-right: 0;
+      }
     }
+
+    @media only screen and (min-width: 800px) and (max-width: 1150px) {
+      shop-product{
+        width: 48%;
+        margin-right: 4%;
+      }
+
+      shop-product:nth-of-type(2n) {
+        margin-right: 0;
+      }
+    }
+
     </style>
 
     <core-ajax

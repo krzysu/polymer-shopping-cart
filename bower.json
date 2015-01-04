@@ -18,7 +18,11 @@
     "paper-button": "Polymer/paper-button#~0.5.2",
     "core-signals": "Polymer/core-signals#~0.5.2",
     "core-ajax": "Polymer/core-ajax#~0.5.2",
-    "core-elements": "Polymer/core-elements#~0.5.2",
-    "paper-elements": "Polymer/paper-elements#~0.5.2"
+    "core-drawer-panel": "Polymer/core-drawer-panel#~0.5.2",
+    "core-toolbar": "Polymer/core-toolbar#~0.5.2",
+    "core-header-panel": "Polymer/core-header-panel#~0.5.2",
+    "core-icons": "Polymer/core-icons#~0.5.2",
+    "paper-icon-button": "Polymer/paper-icon-button#~0.5.2",
+    "paper-shadow": "Polymer/paper-shadow#~0.5.2"
   }
 }
