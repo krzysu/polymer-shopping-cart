@@ -26,7 +26,7 @@ core-toolbar {
 }
 
 footer {
-  margin: 0 2em;
+  margin: 0 2em 2em;
 }
 
 core-drawer-panel:not([narrow]) #cart-icon {
