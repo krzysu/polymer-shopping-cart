@@ -16,6 +16,7 @@
   "dependencies": {
     "polymer": "Polymer/polymer#~0.5.2",
     "paper-button": "Polymer/paper-button#~0.5.2",
-    "core-signals": "Polymer/core-signals#~0.5.2"
+    "core-signals": "Polymer/core-signals#~0.5.2",
+    "core-ajax": "Polymer/core-ajax#~0.5.2"
   }
 }

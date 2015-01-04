@@ -1,4 +1,5 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-ajax/core-ajax.html">
 <link rel="import" href="shop-product.html">
 
 <polymer-element name="shop-product-list" attributes="products-src">
@@ -16,6 +17,13 @@
     }
     </style>
 
+    <core-ajax
+      auto
+      url="../data/products.json"
+      on-core-response="{{productsLoaded}}"
+      handleAs="json">
+    </core-ajax>
+
     <div layout horizontal wrap>
       <template repeat="{{product in products}}">
         <shop-product product="{{product}}"></shop-product>
@@ -26,9 +34,8 @@
 
   <script>
     Polymer('shop-product-list', {
-      ready: function() {
-        // TODO read data with ajax
-        this.products = productsCollection;
+      productsLoaded: function(e, data, sender) {
+        this.products = data.response;
       }
     });
   </script>
