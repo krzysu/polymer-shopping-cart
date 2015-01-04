@@ -1,4 +1,5 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
 
 <polymer-element name="shop-product" attributes="product">
   <template>
@@ -11,6 +12,17 @@
     .button-wrap {
       text-align: right;
     }
+
+    .button--add {
+      color: #fff;
+      background-color: #1976D2
+    }
+
+    .button--remove {
+      color: #fff;
+      background-color: #FF5252;
+    }
+
     </style>
 
     <img src={{product.image}} alt="product image" />
@@ -19,9 +31,17 @@
     <div layout horizontal>
       <div flex one>{{product.price}} {{product.currency}}</div>
       <div flex one class="button-wrap">
-        <button class="btn btn-primary">
-          Add to cart
-        </button>
+        <paper-button
+          on-click="{{addToCart}}"
+          class="{{ {'button--add': !added, 'button--remove': added} | tokenList}}"
+        >
+          <template if="{{added}}">
+            Remove
+          </template>
+          <template if="{{!added}}">
+            Add to cart
+          </template>
+        </paper-button>
       </div>
     </div>
 
@@ -29,7 +49,13 @@
 
   <script>
     Polymer('shop-product', {
-      product: {}
+      product: {},
+      added: false,
+
+      addToCart: function(event, detail, sender) {
+        console.log('clicked', event, detail, sender);
+        this.added = !this.added;
+      }
     });
   </script>
 </polymer-element>
