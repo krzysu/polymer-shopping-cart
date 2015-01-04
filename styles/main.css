@@ -1,0 +1,14 @@
+body {
+  font-size: 1em;
+  font-family: sans-serif;
+  margin: 0;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+footer {
+  margin-top: 2em;
+}
