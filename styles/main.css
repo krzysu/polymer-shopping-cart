@@ -1,8 +1,13 @@
 html,body {
   height: 100%;
   margin: 0;
-  background-color: #fff;
+  background-color: #eee;
   font-family: 'RobotoDraft', sans-serif;
+  color: #212121;
+}
+
+a {
+  color: #1976D2;
 }
 
 core-header-panel {
@@ -16,6 +21,10 @@ core-toolbar {
   color: white;
 }
 
+.content {
+  margin: 2em 2em 0;
+}
+
 footer {
-  margin-top: 2em;
+  margin: 0 2em;
 }

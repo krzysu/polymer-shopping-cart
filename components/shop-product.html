@@ -1,50 +1,79 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../bower_components/core-signals/core-signals.html">
+<link rel="import" href="../bower_components/papere-shadow/paper-shadow.html">
 
 <polymer-element name="shop-product" attributes="product">
   <template>
     <style>
+    :host {
+      margin: 0 0 2.5em;
+    }
+
+    paper-shadow {
+      background: #fff;
+    }
 
     img {
       width: 100%;
     }
 
-    .button-wrap {
-      text-align: right;
+    .details {
+      padding: .5em;
+    }
+
+    .name {
+      display: block;
+      font-size: 1.5em;
+      color: #212121;
+      padding-bottom: .5em;
+      text-decoration: none;
+    }
+
+    .name:hover {
+      color: #1976D2;
+    }
+
+    .price {
+      font-weight: bold;
+    }
+
+    paper-button {
+      color: #fff;
+      margin: 0;
     }
 
     .button--add {
-      color: #fff;
       background-color: #1976D2;
     }
 
     .button--remove {
-      color: #fff;
       background-color: #FF5252;
     }
 
     </style>
 
-    <img src={{product.image}} alt="product image" />
-    <h3><a href={{product.url}} target="_blank">{{product.name}}</a></h3>
+    <paper-shadow>
+      <img src={{product.image}} alt="product image" />
+      <div class="details">
+        <a class="name" href={{product.url}} target="_blank">{{product.name}}</a>
 
-    <div layout horizontal>
-      <div flex one>{{product.price}} {{product.currency}}</div>
-      <div flex one class="button-wrap">
-        <paper-button
-          on-click="{{addToCart}}"
-          class="{{ {'button--add': !added, 'button--remove': added} | tokenList}}"
-        >
-          <template if="{{added}}">
-            Remove
-          </template>
-          <template if="{{!added}}">
-            Add to cart
-          </template>
-        </paper-button>
+        <div layout horizontal justified>
+          <div self-end class="price">{{product.price}} {{product.currency}}</div>
+          <paper-button
+            on-click="{{addToCart}}"
+            class="{{ {'button--add': !added, 'button--remove': added} | tokenList}}"
+          >
+            <template if="{{added}}">
+              Remove
+            </template>
+            <template if="{{!added}}">
+              Add to cart
+            </template>
+          </paper-button>
+        </div>
       </div>
-    </div>
+    </paper-shadow>
 
   </template>
 
