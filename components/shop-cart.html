@@ -1,4 +1,5 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-signals/core-signals.html">
 
 <polymer-element name="shop-cart">
   <template>
@@ -6,11 +7,63 @@
     :host {}
     </style>
 
-    I'm a shopping cart
+    <core-signals on-core-signal-cart-added="{{addItem}}"></core-signals>
+    <core-signals on-core-signal-cart-removed="{{removeItem}}"></core-signals>
+
+    <template if="{{items.length > 0}}">
+      <ul>
+        <template repeat="{{item in items}}">
+          <li class="item">
+            <span class="name">{{item.name}}</span>
+            <span class="price">{{item.price}} {{item.currency}}</span>
+          </li>
+        </template>
+      </ul>
+    </template>
+
+    <template if="{{items.length === 0}}">
+      <div class="alert alert-info">Cart is empty</div>
+    </template>
+
+    <div class="total">Total: {{cartTotal}} {{cartCurrency}}</div>
 
   </template>
 
   <script>
-    Polymer('shop-cart', {});
+    Polymer('shop-cart', {
+      items: [],
+      cartTotal: 0,
+      cartCurrency: 'EUR',
+
+      addItem: function(e, newItem, sender) {
+        this.items.push(newItem);
+        this.countTotal();
+      },
+
+      removeItem: function(e, itemId, sender) {
+        var itemIndexInArray;
+
+        this.items.forEach(function(item, index) {
+          if(item.id === itemId) {
+            itemIndexInArray = index;
+            return true;
+          }
+        });
+
+        this.items.splice(itemIndexInArray, 1);
+
+        this.countTotal();
+      },
+
+      countTotal: function() {
+        var total = 0;
+
+        this.items.forEach(function(item, index) {
+          total += item.price;
+        });
+
+        this.cartTotal = total;
+      }
+    });
   </script>
 </polymer-element>

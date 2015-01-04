@@ -1,5 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/core-signals/core-signals.html">
 
 <polymer-element name="shop-product" attributes="product">
   <template>
@@ -53,7 +54,16 @@
       added: false,
 
       addToCart: function(event, detail, sender) {
-        console.log('clicked', event, detail, sender);
+        if(!this.added) {
+          // add
+          this.fire('core-signal', {name: 'cart-added', data: this.product});
+        }
+        else {
+          // remove
+          this.fire('core-signal', {name: 'cart-removed', data: this.product.id});
+        }
+
+        // update button state
         this.added = !this.added;
       }
     });
